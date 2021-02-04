@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+    />"
+    <script
+        defer
+        src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+        crossorigin="anonymous"
+    ></script>
+    <title> Trying bootstrap</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">ExpenceRecord</span>
+    </nav>
+    <div class="container-fluid bg-light" style="min-height: 100vh">
+        <div class="container">
+            <div class="jumbotron mt-4">
+
+                <div class="input-group mb-3">
+                    <input
+                            type="text"
+                            id="inputValue"
+                            class="form-control"
+                            placeholder="Amount spent"
+                            aria-describedby="spent in rupee"
+                                />
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="spent in rupee">₹</span>
+                                </div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="spent at">@</span>
+        
+                    </div>
+                    <input
+                                type="text"
+                                id="inputDesc"
+                                class="form-control"
+                                placeholder="spent On"
+                                aria-label="spent On"
+                                aria-describedby="spent at"
+                            />
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary" type="button" id="buttonAddValues">Add</button>
+                            </div>
+                </div>
+
+                <div>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="d-flex flex-column">
+                                Tshirt
+                                <small class="text-muted">March 11, 2019</small>
+                            </div>
+                            <div>
+                                <span class="px-5">
+                                    500
+                                </span>
+                                <button type="button" class="btn btn-outline-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div class="d-flex flex-column">
+                                Movie
+                                <small class="text-muted">Feb 12, 2019</small>
+                            </div>
+                            <div>
+                                <span class="px-5">
+                                    1500
+                                </span>
+                                <button type="button" class="btn btn-outline-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                    </div>
+                    
+                    
+            </div>
+                <h1 id="headingID"> </h1>
+    
+
+<div id="ExpenseTable"></div>
+                
+                </div>
+                </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<script>
+
+//init total expence to 0
+let totalExpence=0;
+
+const headingSUM=document.querySelector("#headingID");
+//Get the reference to Desc element
+
+const inputDescEl=document.querySelector("#inputDesc");
+
+//ref to input amount
+const inputElement=document.querySelector("#inputValue");
+
+//Getting reference of tyhe table
+const expenseTableEl=document.querySelector("#ExpenseTable");
+
+//read values from input
+headingSUM.textContent = totalExpence;
+
+//All expense 
+
+const All_expenses=[];
+
+//
+ 
+//Making a function which will add the inputed values 
+function addValuesToTotal(){
+//Object which have both field..amount and discription
+
+const expence_obj={};
+
+
+
+    //read value from input 
+
+//storing inputed price   
+const textAmount=inputElement.value;
+//storing Description of spending 
+const textDesc=inputDescEl.value;
+
+//printing  on console in object format
+console.log({ textDesc,textAmount });
+
+//Now converting that text value to number type
+const expense =parseInt(textAmount,10);
+
+//puting data into object
+expence_obj.Description=textDesc;
+expence_obj.amount=expense;
+
+
+ All_expenses.push(expence_obj);
+
+
+ // console.table(All_expenses);
+
+
+
+totalExpence = totalExpence+ expense;
+//Templating
+
+const someText=`The total expence is :${totalExpence}`;
+headingSUM.textContent= someText;
+
+//console.log(someText);
+
+headingSUM.textContent=someText;
+
+// //showing table here
+// const data1=All_expenses[0];
+// const data2=All_expenses[1];
+
+// const data1Text=` ${data1.amount} ::  ${data1.Description}`;
+// const data2Text=` ${data2.amount} ::  ${data2.Description}`;
+
+// const tableText=`
+// <div>${data1Text}</div>
+// <div>${data2Text}</div>
+// `
+// expenseTableEl.innerHTML = tableText;
+ 
+const All_expensesHTML=All_expenses.map(expense1=> {return `<div>${expense1.amount} :: ${expense1.Description} </div>`});
+
+console.log(All_expensesHTML)
+
+
+const joinAll_expensesHTML=All_expensesHTML.join("");
+
+console.log(joinAll_expensesHTML);
+
+expenseTableEl.innerHTML=joinAll_expensesHTML;
+
+}
+
+//1st Get the button element
+
+const element=document.querySelector("#buttonAddValues");
+
+
+//2nd Listen to click event
+
+element.addEventListener("click",addValuesToTotal,false);
+
+
+</script>
+</body>
+</html>

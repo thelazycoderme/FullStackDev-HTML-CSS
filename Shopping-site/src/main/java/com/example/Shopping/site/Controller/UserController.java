@@ -19,9 +19,10 @@ public class UserController {
     }
 
     @GetMapping("/home")
-    public void welcomeMessage()
+    public String welcomeMessage()
     {
-        System.out.println("Welcome to homepage");
+        //System.out.println("Welcome to homepage");
+        return "login_page.html";
     }
 
 
@@ -67,23 +68,12 @@ public class UserController {
     {
        return userService.updateUserById(user);
     }
-    
-//    @PutMapping("/patchUser")
-//    public User patchUser(@RequestBody User user)
-//    {
-//        return userService.updateUserById(user);
-//    }
+
 
     @DeleteMapping("/deleteUser/{id}")
     public String deleteUser(@PathVariable int id)
     {
        return userService.deleteUserById(id);
     }
-//
-//    @DeleteMapping("/deleteUserByName/{name}")
-//    public String deleteUser(@PathVariable String name)
-//    {
-//        return userService.deleteUserByName(name);
-//    }
 
 }

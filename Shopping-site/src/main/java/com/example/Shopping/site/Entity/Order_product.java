@@ -7,22 +7,20 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
-public class User {
+public class Order_product {
     @Id
     @GeneratedValue
     private long id;
-    private String email;
-    private String First_name;
-    private String Middle_name;
-    private String Last_name;
-    private String Password;
-    private Boolean isDeleted;
-    private Boolean isActive;
-
+    //foreign key
+    private long order_id;
+    private int quantity;
+    private double price;
+    //foreign key
+    private long product_variation_id;
+    private String product_variation_metadata;
 }

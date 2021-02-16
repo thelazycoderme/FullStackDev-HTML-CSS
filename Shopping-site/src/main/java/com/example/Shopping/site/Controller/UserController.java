@@ -4,7 +4,6 @@ package com.example.Shopping.site.Controller;
 import com.example.Shopping.site.Entity.User;
 import com.example.Shopping.site.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +21,7 @@ public class UserController {
     public String welcomeMessage()
     {
         //System.out.println("Welcome to homepage");
-        return "login_page.html";
+        return "login.html";
     }
 
 

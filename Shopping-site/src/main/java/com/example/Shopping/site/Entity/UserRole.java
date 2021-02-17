@@ -3,17 +3,20 @@ package com.example.Shopping.site.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
-public class Customer extends User{
-
-private String contact;
+@Data
+@ToString
+public class UserRole {
+    @Id
+    @GeneratedValue
+    private long id;
+    //foreign key 1
+    //@ManyToOne
 
 }

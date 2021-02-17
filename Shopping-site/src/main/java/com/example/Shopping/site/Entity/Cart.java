@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,10 +13,15 @@ import javax.persistence.Id;
 public class Cart {
 
     @Id
+    private long id;
     //foreign key
-    private long customer_user_id;
-    private double qunatity;
+//    @OneToOne
+//    @JoinColumn(name = "customer_user_id")
+   // private Customer customer;
+    private double quantity;
     private boolean isWish_item;
     //foreign key
-    private long product_variation_id;
+//    @OneToOne
+//    @JoinColumn(name = "product_variation_id")
+   // private Product_variation product_variation;
 }

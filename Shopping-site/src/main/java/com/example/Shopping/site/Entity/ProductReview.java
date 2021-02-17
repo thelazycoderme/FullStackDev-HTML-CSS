@@ -5,17 +5,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
-public class Category_metadata_field {
-   @Id
-   @GeneratedValue
-    private long id;
-    private String name;
+public class ProductReview {
+    @Id
+    //foreign key
+    private int customer_user_id;
+    private String review;
+    private String rating;
+    //foreign key;
+    private long product_id;
 
 }

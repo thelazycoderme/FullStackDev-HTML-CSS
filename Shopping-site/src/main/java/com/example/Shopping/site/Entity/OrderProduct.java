@@ -4,23 +4,26 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
-public class Order_product {
+public class OrderProduct {
     @Id
     @GeneratedValue
     private long id;
     //foreign key
-    private long order_id;
+//    @ManyToOne
+//    @JoinColumn(name="order_id")
+//    private Order order;
     private int quantity;
     private double price;
     //foreign key
-    private long product_variation_id;
+//    @ManyToMany
+//    @JoinColumn(name = "product_variation_id")
+//    private Product_variation product_variation;
+
     private String product_variation_metadata;
 }

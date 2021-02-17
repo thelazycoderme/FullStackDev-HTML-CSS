@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,13 +14,20 @@ public class Product {
     @Id
     @GeneratedValue
     private long id;
-    //foreign key
-    private long seller_user_id;
+//    @ManyToOne
+//    @JoinColumn(name="seller_user_id")
+//    private Seller seller;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "products")
+    Category category;
+
+
     private String name;
     private String description;
     private boolean is_cancellable;
     private boolean is_returnable;
     private String brand;
     private boolean isActive;
+
 
 }

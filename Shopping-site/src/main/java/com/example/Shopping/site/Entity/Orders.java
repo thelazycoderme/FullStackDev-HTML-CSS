@@ -4,21 +4,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 @Entity
-public class Order {
+public class Orders {
     @Id
     @GeneratedValue
     private long id;
     //foreign key
-    private long customer_user_id;
+//    @ManyToOne
+//    @JoinColumn(name="customer_user_id")
+//    private Customer customer;
+
     private String amount_paid;
     private Date date_created;
     private String payment_method;

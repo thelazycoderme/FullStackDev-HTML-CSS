@@ -4,18 +4,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
-public class Order_status {
+public class OrderStatus {
     @Id
+    @GeneratedValue
+    private long id;
+
     //foreign key
-    private long order_product_id;
+//
+//    @OneToOne
+//    @JoinColumn(name = "order_product_id")
+//    private Order_product order_product;
     private enum from_status
     {
      ORDER_PLACED,CANCELLED,ORDER_REJECTED,ORDER_CONFIRMED,ORDER_SHIPPED,

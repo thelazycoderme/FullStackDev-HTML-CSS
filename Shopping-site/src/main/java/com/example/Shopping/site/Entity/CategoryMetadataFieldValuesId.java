@@ -15,10 +15,10 @@ import java.io.Serializable;
 @Data
 public class CategoryMetadataFieldValuesId implements Serializable{
     @Column(name = "categoryId")
-    private long cid;
+    private Long cid;
 
     @Column(name = "categoryMetadataId")
-    private long mid;
+    private Long mid;
 
 
 }

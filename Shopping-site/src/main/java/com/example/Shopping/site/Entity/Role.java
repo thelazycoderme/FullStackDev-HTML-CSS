@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,7 +17,11 @@ import javax.persistence.Id;
 public class Role {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
+
+
     private String Authority;
 
 }

@@ -16,7 +16,7 @@ import java.util.Set;
 public class Category {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
@@ -31,6 +31,6 @@ public class Category {
 
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<CategoryMetadataFieldValues> categoryMetadataFieldValues;
-    
+
 
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,15 +14,18 @@ import javax.persistence.*;
 public class Cart {
 
     @Id
-    private long id;
+    private Long id;
     //foreign key
 //    @OneToOne
 //    @JoinColumn(name = "customer_user_id")
    // private Customer customer;
-    private double quantity;
-    private boolean isWish_item;
+    private Double quantity;
+    private Boolean isWish_item;
     //foreign key
-//    @OneToOne
-//    @JoinColumn(name = "product_variation_id")
-   // private Product_variation product_variation;
+
+
+    @OneToMany(mappedBy = "cart",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private Set<ProductVariation> product_variation;
+
+
 }

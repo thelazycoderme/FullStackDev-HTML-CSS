@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -14,11 +15,15 @@ import java.util.Date;
 public class Orders {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     //foreign key
-//    @ManyToOne
-//    @JoinColumn(name="customer_user_id")
-//    private Customer customer;
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name="customerUserId")
+    private Customer customer;
+
+    @OneToMany(mappedBy ="orders",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private Set<OrderProduct> ordersSet;
+
 
     private String amount_paid;
     private Date date_created;

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -13,17 +14,21 @@ import javax.persistence.*;
 public class OrderProduct {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     //foreign key
-//    @ManyToOne
-//    @JoinColumn(name="order_id")
-//    private Order order;
-    private int quantity;
-    private double price;
+    @ManyToOne
+    @JoinColumn(name="orderId")
+    private Orders orders;
+
+    @OneToOne
+    OrderStatus orderStatus;
+
+    private Integer quantity;
+    private Double price;
     //foreign key
-//    @ManyToMany
-//    @JoinColumn(name = "product_variation_id")
-//    private Product_variation product_variation;
+    @ManyToOne
+    @JoinColumn(name = "productVariationId")
+    private ProductVariation productVariation;
 
     private String product_variation_metadata;
 }

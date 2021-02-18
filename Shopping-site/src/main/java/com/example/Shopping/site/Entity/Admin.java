@@ -16,7 +16,8 @@ import javax.persistence.Id;
 @AllArgsConstructor
 
 public class Admin extends User{
-@Id
+    @Id
     @GeneratedValue
-    private long id;
+    private Long id;
+
 }

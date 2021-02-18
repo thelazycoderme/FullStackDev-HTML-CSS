@@ -13,13 +13,15 @@ import javax.persistence.*;
 public class OrderStatus {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     //foreign key
 //
-//    @OneToOne
-//    @JoinColumn(name = "order_product_id")
-//    private Order_product order_product;
+    @OneToOne
+    @JoinColumn(name = "orderProductId")
+    private OrderProduct orderProduct;
+
+
     private enum from_status
     {
      ORDER_PLACED,CANCELLED,ORDER_REJECTED,ORDER_CONFIRMED,ORDER_SHIPPED,

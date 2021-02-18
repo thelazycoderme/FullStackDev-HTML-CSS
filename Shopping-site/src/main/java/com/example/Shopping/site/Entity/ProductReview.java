@@ -3,21 +3,26 @@ package com.example.Shopping.site.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.parameters.P;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
 public class ProductReview {
-    @Id
-    //foreign key
-    private int customer_user_id;
+    @Id@GeneratedValue
+    private Long id;
+    @ManyToOne
+    @JoinColumn(name = "customerUserId")
+    private Customer customer;
+
     private String review;
     private String rating;
-    //foreign key;
-    private long product_id;
+
+    @ManyToOne
+    @JoinColumn(name = "productId")
+    Product product;
 
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,21 +14,29 @@ import javax.persistence.*;
 public class Product {
     @Id
     @GeneratedValue
-    private long id;
-//    @ManyToOne
-//    @JoinColumn(name="seller_user_id")
-//    private Seller seller;
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "products")
-    Category category;
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "sellerId")
+    private Seller seller;
+
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    private Set<ProductVariation> variations;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "categoryId")
+    private Category category;
+
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    private Set<ProductReview> reviews;
 
 
     private String name;
     private String description;
-    private boolean is_cancellable;
-    private boolean is_returnable;
+    private Boolean is_cancellable;
+    private Boolean is_returnable;
     private String brand;
-    private boolean isActive;
+    private Boolean isActive;
 
 
 }
